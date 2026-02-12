@@ -1,4 +1,4 @@
-package com.delivery.manager;
+package com.fooddelivery;
 
 /**
  * Hello world!

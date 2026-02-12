@@ -1,4 +1,4 @@
-package com.delivery.manager;
+package com.fooddelivery;
 
 import static org.junit.Assert.assertTrue;
 
