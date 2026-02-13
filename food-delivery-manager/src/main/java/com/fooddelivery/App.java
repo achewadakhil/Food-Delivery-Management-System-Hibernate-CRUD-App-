@@ -1,9 +1,10 @@
 package com.fooddelivery;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import java.util.Scanner;
+
+import com.fooddelivery.DAO.CustomerDAO;
+
+
 
 
 /**
@@ -14,25 +15,35 @@ public class App
 {
     public static void main( String[] args )
     {
-        Customer c1 = new Customer();
+        
 
-        c1.setId(1);
-        c1.setName("Akhil");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Food Delivery App:");
 
-        SessionFactory sf = new Configuration()
-                            .addAnnotatedClass(Customer.class)
-                            .configure()
-                            .buildSessionFactory();
-        Session session = sf.openSession();
+    
+
+        System.out.println("1)Add customer");
+        
+        int ch;
+
+        do{
+            System.out.println("Select any choice :");
+            ch = sc.nextInt();
+            sc.nextLine();
+            switch(ch){
+                case 1 : {
+                    System.out.print("Enter name :");
+                    String name = sc.nextLine();
+                    System.out.print("Enter id : ");
+                    int id = sc.nextInt();
+                    CustomerDAO.saveCustomer(name, id);
+                }
+            }
+        }while(ch!=0);
 
         
-        
-        session.persist(c1);
-        
-        Transaction tx = session.beginTransaction();
-        tx.commit();
-        sf.close();
-        session.close();
-        System.out.println(c1);
+
+        sc.close();
+
     }
 }
