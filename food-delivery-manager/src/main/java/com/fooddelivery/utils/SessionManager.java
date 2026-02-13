@@ -22,5 +22,9 @@ public class SessionManager {
     public static SessionFactory getSession(){
         return sf;
     }
+
+    public static void closeSession(){
+        sf.close();
+    }
     
 }

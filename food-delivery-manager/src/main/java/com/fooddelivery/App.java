@@ -17,15 +17,15 @@ public class App
     {
         
 
-        Scanner sc = new Scanner(System.in);
         System.out.println("Food Delivery App:");
-
-    
-
+        
+        
+        Scanner sc = new Scanner(System.in);
+        
         System.out.println("1)Add customer");
         
         int ch;
-
+        
         do{
             System.out.println("Select any choice :");
             ch = sc.nextInt();
@@ -39,6 +39,10 @@ public class App
                     CustomerDAO.saveCustomer(name, id);
 
                     break;
+                }
+                case 2 : {
+                    System.out.println("Enter Id to search for Student:");
+                    System.out.println(CustomerDAO.getCustomer(sc.nextInt()));
                 }
             }
         }while(ch!=0);

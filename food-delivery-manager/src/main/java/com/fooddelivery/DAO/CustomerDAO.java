@@ -1,5 +1,6 @@
 package com.fooddelivery.DAO;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -13,13 +14,33 @@ public class CustomerDAO {
         Customer customer = new Customer();
         customer.setId(id);
         customer.setName(name);
-        Session session = SessionManager.getSession().openSession(); 
+        
+        try(Session session = SessionManager.getSession().openSession(); ){
 
-        Transaction transaction = session.beginTransaction();
+            Transaction transaction = session.beginTransaction();
+    
+            session.persist(customer);
+    
+            transaction.commit();
 
-        session.persist(customer);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
-        transaction.commit();
-        session.close();
+    }
+
+
+    public static Customer getCustomer(int id){
+
+        try(Session session = SessionManager.getSession().openSession();){
+
+            Customer foundCustomer = session.find(Customer.class, id);
+            
+            return foundCustomer;
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }
