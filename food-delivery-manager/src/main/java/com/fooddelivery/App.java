@@ -37,6 +37,8 @@ public class App
                     System.out.print("Enter id : ");
                     int id = sc.nextInt();
                     CustomerDAO.saveCustomer(name, id);
+
+                    break;
                 }
             }
         }while(ch!=0);
