@@ -23,6 +23,8 @@ public class App
         Scanner sc = new Scanner(System.in);
         
         System.out.println("1)Add customer");
+        System.out.println("2)Get customer");
+
         
         int ch;
         
@@ -41,8 +43,13 @@ public class App
                     break;
                 }
                 case 2 : {
-                    System.out.println("Enter Id to search for Student:");
+                    System.out.println("Enter Id to search for Customer:");
                     System.out.println(CustomerDAO.getCustomer(sc.nextInt()));
+                    break;
+                }
+                case 3 : { 
+                    System.out.println("Enter Id to get updated : ");
+                    CustomerDAO.updateCustomer(sc.nextInt());
                 }
             }
         }while(ch!=0);
